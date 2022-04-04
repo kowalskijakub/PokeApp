@@ -1,0 +1,9 @@
+.pokemon {
+  border: 1px solid black;
+  width: 200px;
+  text-align: center;
+  border-radius: 10px;
+}
+.pokemon > h1 {
+  text-transform: capitalize;
+}

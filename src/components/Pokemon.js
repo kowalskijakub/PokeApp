@@ -1,21 +1,28 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import './Pokemon.css';
 
-const Pokemon = () => {
+const Pokemon = ({ id }) => {
   const [pokemon, setPokemon] = useState('');
-  useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/1`)
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-      })
-      .then(data => {
-        console.log(data);
-        setPokemon(data);
-      });
-  }, []);
 
-  return <h1>{pokemon.name}</h1>;
+  fetch(`https://pokeapi.co/api/v2/pokemon/${id}`)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+    })
+    .then(data => {
+      setPokemon(data);
+    });
+
+  return (
+    <div className="pokemon">
+      <h1>{pokemon.name}</h1>
+      <img
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`}
+        alt={pokemon.name}
+      />
+    </div>
+  );
 };
 
 export default Pokemon;
