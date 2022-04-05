@@ -1,5 +1,53 @@
+@font-face {
+  font-family: 'Pokemon Solid';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/PokemonSolid.ttf');
+}
+@font-face {
+  font-family: 'Pokemon X and Y';
+  font-style: normal;
+  font-weight: normal;
+  src: url('./fonts/PokemonXandY.ttf');
+}
 body {
   background-color: lightgray;
   margin: 0;
   padding: 0;
+}
+
+header {
+  margin: 0;
+  padding: 0;
+  background-color: #9e9d9d;
+}
+.header_title {
+  margin: 0;
+  padding: 0;
+  font-family: 'Pokemon Solid';
+  text-align: center;
+  color: #ffcb05;
+  text-shadow: 0 0 20px #2a75bb;
+  font-size: 4em;
+}
+
+.menu {
+  display: flex;
+  background-color: #9e9d9d;
+  gap: 10px;
+  padding: 5px 15px;
+}
+.menu > a {
+  display: block;
+  padding: 5px;
+  text-decoration: none;
+  font-family: 'Pokemon X and Y';
+  color: black;
+  font-size: 2em;
+  border-radius: 10px;
+  text-align: center;
+  padding: 0px 10px;
+}
+.menu > a:hover {
+  background-color: #c4c3c3;
 }
