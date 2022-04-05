@@ -1,8 +1,8 @@
 import React from 'react';
-import Pokemon from './components/Pokemon';
+import Pokemon from './components/Pokemon/Pokemon';
 
 const App = () => {
-  return <Pokemon id="1" />;
+  return <Pokemon />;
 };
 
 export default App;
