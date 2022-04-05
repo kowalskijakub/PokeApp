@@ -18,7 +18,7 @@ const Pokemon = () => {
     const renderedPokemon = pokemon.map(n => {
       return <PokemonCard pokemon={n} key={n.url} />;
     });
-    return <div>{renderedPokemon}</div>;
+    return <div class="container">{renderedPokemon}</div>;
   }
   return <h1>loading...</h1>;
 };
