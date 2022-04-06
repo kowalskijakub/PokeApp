@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PokemonCard from './PokemonCard';
-import './Pokemon.css';
+import Loading from '../Loading';
 
 const Pokemon = () => {
   const [pokemon, setPokemon] = useState('');
@@ -21,7 +21,7 @@ const Pokemon = () => {
     });
     return <div className="container">{renderedPokemon}</div>;
   }
-  return <h1>loading...</h1>;
+  return <Loading />;
 };
 
 export default Pokemon;

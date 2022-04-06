@@ -11,7 +11,7 @@
   src: url('./fonts/PokemonXandY.ttf');
 }
 body {
-  background-color: lightgray;
+  background-color: #3d7dca;
   margin: 0;
   padding: 0;
 }
@@ -19,7 +19,7 @@ body {
 header {
   margin: 0;
   padding: 0;
-  background-color: #9e9d9d;
+  background-color: #003a70;
 }
 .header_title {
   margin: 0;
@@ -27,13 +27,13 @@ header {
   font-family: 'Pokemon Solid';
   text-align: center;
   color: #ffcb05;
-  text-shadow: 0 0 20px #2a75bb;
+  text-shadow: 0 0 20px black;
   font-size: 4em;
 }
 
 .menu {
   display: flex;
-  background-color: #9e9d9d;
+  background-color: #003a70;
   gap: 10px;
   padding: 5px 15px;
 }
@@ -42,12 +42,33 @@ header {
   padding: 5px;
   text-decoration: none;
   font-family: 'Pokemon X and Y';
-  color: black;
+  color: white;
   font-size: 2em;
   border-radius: 10px;
   text-align: center;
   padding: 0px 10px;
 }
 .menu > a:hover {
-  background-color: #c4c3c3;
+  background-color: #3d7dca;
+  color: black;
+  transition: 0.2s;
+}
+.card {
+  text-align: center;
+  border-radius: 10px;
+  align-self: auto;
+  background-color: #f2f2f2;
+  margin: 5px;
+  padding: 0px 30px;
+}
+.card > h1 {
+  text-transform: capitalize;
+  font-family: 'Pokemon X and Y';
+}
+.container {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Loading from '../Loading';
 import ItemCard from './ItemCard';
 
 const Items = () => {
@@ -18,7 +19,7 @@ const Items = () => {
     });
     return <div className="container">{renderedItems}</div>;
   }
-  return <h1>Loading</h1>;
+  return <Loading />;
 };
 
 export default Items;
