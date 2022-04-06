@@ -1,4 +1,4 @@
-.pokemon {
+.card {
   text-align: center;
   border-radius: 10px;
   align-self: auto;
@@ -6,7 +6,7 @@
   margin: 5px;
   padding: 0px 30px;
 }
-.pokemon > h1 {
+.card > h1 {
   text-transform: capitalize;
   font-family: 'Pokemon X and Y';
 }
