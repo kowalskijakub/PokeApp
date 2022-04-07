@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import PokemonCard from './PokemonCard';
 import Loading from '../Loading';
+import ChangePage from '../ChangePage';
 
 const Pokemon = () => {
   const [pokemon, setPokemon] = useState('');
+  const [pageNumber, setPageNumber] = useState(1);
+
+  const pokemonOnPage = 50;
+  const offsetPokemon = (pageNumber - 1) * pokemonOnPage;
+  const maxPage = Math.ceil(1126 / pokemonOnPage);
   useEffect(() => {
-    fetch(`https://pokeapi.co/api/v2/pokemon?limit=1126`)
+    // 1126
+    fetch(`https://pokeapi.co/api/v2/pokemon?limit=50&offset=${offsetPokemon}`)
       .then(response => {
         if (response.ok) {
           return response.json();
@@ -14,12 +21,23 @@ const Pokemon = () => {
       .then(data => {
         setPokemon(data.results);
       });
-  }, []);
+  }, [offsetPokemon]);
   if (pokemon) {
     const renderedPokemon = pokemon.map(n => {
       return <PokemonCard pokemon={n} key={n.url} />;
     });
-    return <div className="container">{renderedPokemon}</div>;
+    return (
+      <div>
+        <div className="container">{renderedPokemon}</div>
+        <div>
+          <ChangePage
+            pageNumber={pageNumber}
+            setPageNumber={setPageNumber}
+            maxPage={maxPage}
+          />
+        </div>
+      </div>
+    );
   }
   return <Loading />;
 };

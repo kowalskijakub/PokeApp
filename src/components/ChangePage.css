@@ -1,0 +1,33 @@
+.change_page {
+  display: flex;
+  margin: 10px 0px 5px 0px;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Pokemon X and Y';
+  font-size: 1.5em;
+}
+.previous_page {
+  background-color: lightgray;
+}
+.next_page {
+  background-color: lightgray;
+}
+.page_numb_container {
+  display: flex;
+  gap: 5px;
+}
+
+.page_button {
+  background-color: lightgray;
+  padding: 5px 10px;
+  border: 3px solid black;
+  border-radius: 10px;
+}
+.page_button:hover {
+  cursor: pointer;
+  background-color: rgb(112, 112, 112);
+}
+.active {
+  cursor: default;
+  background-color: rgb(112, 112, 112);
+}
