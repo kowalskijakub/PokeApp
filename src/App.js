@@ -1,18 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Pokemon from './components/Pokemon/Pokemon';
 import Items from './components/Items/Items';
 import Header from './components/Header';
 import NavBar from './components/NavBar';
+import DetailCard from './components/DetailCard';
 const App = () => {
+  const [visibilityDetailCard, setVisibilityDetailCard] = useState(false);
+  const [detailInfo, setDetailInfo] = useState([]);
   return (
     <div>
       <Header />
-
+      {visibilityDetailCard ? <DetailCard detailInfo={detailInfo} /> : ''}
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Pokemon />} />
+          <Route
+            path="/"
+            element={
+              <Pokemon
+                setDetailInfo={setDetailInfo}
+                setVisibilityDetailCard={setVisibilityDetailCard}
+              />
+            }
+          />
         </Routes>
         <Routes>
           <Route path="/items" element={<Items />} />

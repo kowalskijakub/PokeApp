@@ -72,3 +72,7 @@ header {
   justify-content: center;
   gap: 10px;
 }
+.card:hover {
+  cursor: pointer;
+  background-color: rgb(112, 112, 112);
+}

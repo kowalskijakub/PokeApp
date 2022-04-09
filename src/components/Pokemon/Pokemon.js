@@ -3,7 +3,7 @@ import PokemonCard from './PokemonCard';
 import Loading from '../Loading';
 import ChangePage from '../ChangePage';
 
-const Pokemon = () => {
+const Pokemon = ({ setVisibilityDetailCard }) => {
   const [pokemon, setPokemon] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
 
@@ -24,7 +24,13 @@ const Pokemon = () => {
   }, [offsetPokemon]);
   if (pokemon) {
     const renderedPokemon = pokemon.map(n => {
-      return <PokemonCard pokemon={n} key={n.url} />;
+      return (
+        <PokemonCard
+          pokemon={n}
+          key={n.url}
+          setVisibilityDetailCard={setVisibilityDetailCard}
+        />
+      );
     });
     return (
       <div>
