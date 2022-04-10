@@ -3,7 +3,7 @@ import PokemonCard from './PokemonCard';
 import Loading from '../Loading';
 import ChangePage from '../ChangePage';
 
-const Pokemon = ({ setVisibilityDetailCard }) => {
+const Pokemon = ({ setVisibilityDetailCard, setDetailInfo }) => {
   const [pokemon, setPokemon] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
 
@@ -29,6 +29,7 @@ const Pokemon = ({ setVisibilityDetailCard }) => {
           pokemon={n}
           key={n.url}
           setVisibilityDetailCard={setVisibilityDetailCard}
+          setDetailInfo={setDetailInfo}
         />
       );
     });

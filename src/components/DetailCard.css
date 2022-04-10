@@ -9,11 +9,39 @@
   margin: 0;
 }
 .information {
+  position: fixed;
+  top: 5%;
+  left: 5%;
   background-color: lightgray;
-  width: 80%;
-  margin: auto;
+  width: 90%;
+  height: 90%;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
 }
 .information > h1 {
   margin: 0;
   padding: 0;
+  text-transform: uppercase;
+}
+.close {
+  margin-left: auto;
+  font-size: 2em;
+  font-weight: bold;
+  width: fit-content;
+  height: fit-content;
+  padding: 0 5px;
+  border-radius: 10px;
+}
+.close:hover {
+  cursor: pointer;
+}
+.detail {
+  padding: 3px;
+}
+.detail > h1 {
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid black;
 }

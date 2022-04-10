@@ -11,7 +11,14 @@ const App = () => {
   return (
     <div>
       <Header />
-      {visibilityDetailCard ? <DetailCard detailInfo={detailInfo} /> : ''}
+      {visibilityDetailCard ? (
+        <DetailCard
+          detailInfo={detailInfo}
+          setVisibilityDetailCard={setVisibilityDetailCard}
+        />
+      ) : (
+        ''
+      )}
       <BrowserRouter>
         <NavBar />
         <Routes>
