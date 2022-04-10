@@ -4,14 +4,33 @@ import Loading from './Loading';
 const InfoCard = ({ detailInfo, setVisibilityDetailCard }) => {
   const [detail, setDetail] = useState('');
   useEffect(() => {
-    fetch(detailInfo.url)
+    fetch(detailInfo[1].url)
       .then(response => response.json())
       .then(data => {
         setDetail(data);
       });
   }, [detailInfo]);
 
-  if (detail)
+  if (detail) {
+    const renderedSprites = Object.entries(detail.sprites).map(
+      ([key, values]) => {
+        if (typeof values === 'string' && values) {
+          return (
+            <img
+              src={values}
+              alt={values.name}
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null; // prevents looping
+                currentTarget.src =
+                  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png';
+              }}
+            />
+          );
+        } else {
+          return '';
+        }
+      }
+    );
     return (
       <div className="info_container">
         <div className="information">
@@ -26,10 +45,12 @@ const InfoCard = ({ detailInfo, setVisibilityDetailCard }) => {
           </div>
           <div className="detail">
             <h1>{detail.name}</h1>
+            <div className="SpriteContainer">{renderedSprites}</div>
           </div>
         </div>
       </div>
     );
+  }
   return <Loading />;
 };
 
