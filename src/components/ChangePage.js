@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import './ChangePage.css';
 
 const ChangePage = ({ pageNumber, setPageNumber, maxPage }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  if (!searchParams.get('page')) {
-    setSearchParams({ page: 1 });
-  }
-  setPageNumber(parseInt(searchParams.get('page')));
+  const getPage = searchParams.get('page');
+  useEffect(() => {
+    if (!getPage) {
+      setSearchParams({ page: 1 });
+    } else {
+      setPageNumber(parseInt(getPage));
+    }
+  });
+
   const pageContainer = new Array(5);
   for (let i = 0; i < 5; i++) {
     if (pageNumber === 1) pageContainer[i] = pageNumber + i;
@@ -23,6 +28,7 @@ const ChangePage = ({ pageNumber, setPageNumber, maxPage }) => {
       if (page !== parseInt(pageNumber))
         return (
           <div
+            key={page}
             className="page_button"
             onClick={() => {
               setSearchParams({ page });
@@ -31,7 +37,11 @@ const ChangePage = ({ pageNumber, setPageNumber, maxPage }) => {
             {page}
           </div>
         );
-      return <div className="page_button active">{page}</div>;
+      return (
+        <div key={page} className="page_button active">
+          {page}
+        </div>
+      );
     }
     return '';
   });

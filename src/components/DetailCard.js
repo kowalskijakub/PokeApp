@@ -12,11 +12,13 @@ const InfoCard = ({ detailInfo, setVisibilityDetailCard }) => {
   }, [detailInfo]);
 
   if (detail) {
-    const renderedSprites = Object.entries(detail.sprites).map(
-      ([key, values]) => {
+    const renderedSprites = Object.entries(detail.sprites)
+      .reverse()
+      .map(([key, values]) => {
         if (typeof values === 'string' && values) {
           return (
             <img
+              key={values}
               src={values}
               alt={values.name}
               onError={({ currentTarget }) => {
@@ -29,8 +31,7 @@ const InfoCard = ({ detailInfo, setVisibilityDetailCard }) => {
         } else {
           return '';
         }
-      }
-    );
+      });
     return (
       <div className="info_container">
         <div className="information">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 import PokemonCard from './PokemonCard';
 import Loading from '../Loading';
 import ChangePage from '../ChangePage';
@@ -43,6 +44,7 @@ const Pokemon = ({ setVisibilityDetailCard, setDetailInfo }) => {
             maxPage={maxPage}
           />
         </div>
+        <Outlet />
       </div>
     );
   }

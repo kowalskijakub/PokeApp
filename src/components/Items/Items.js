@@ -21,7 +21,7 @@ const Items = () => {
   }, [offsetItems]);
   if (items) {
     const renderedItems = items.map(item => {
-      return <ItemCard item={item} />;
+      return <ItemCard item={item} key={item.url} />;
     });
     return (
       <div>
