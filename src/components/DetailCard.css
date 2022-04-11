@@ -7,6 +7,7 @@
   width: 100%;
   height: 100%;
   margin: 0;
+  font-family: 'Pokemon X and Y';
 }
 .information {
   position: fixed;
@@ -44,4 +45,30 @@
   margin: 0;
   padding: 0;
   border-bottom: 1px solid black;
+}
+.detail_flex {
+  display: flex;
+
+  justify-content: space-around;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+h3 {
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
