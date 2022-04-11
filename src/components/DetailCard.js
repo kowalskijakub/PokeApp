@@ -51,8 +51,15 @@ const InfoCard = ({ detailInfo, setVisibilityDetailCard }) => {
     });
     const renderedTypes = detail.types.map(({ type }) => {
       return (
-        <tr>
-          <td>{type.name}</td>
+        <tr key={type.url}>
+          <td>{type.name.toUpperCase()}</td>
+        </tr>
+      );
+    });
+    const renderedMoves = detail.moves.slice(0, 10).map(({ move }) => {
+      return (
+        <tr key={move.url}>
+          <td>{move.name.split('-').join(' ').toUpperCase()}</td>
         </tr>
       );
     });
@@ -75,30 +82,51 @@ const InfoCard = ({ detailInfo, setVisibilityDetailCard }) => {
               <div className="Types">
                 <h3>TYPES</h3>
                 <table>
-                  <tr>
-                    <th>NAME</th>
-                  </tr>
-                  {renderedTypes}
+                  <thead>
+                    <tr>
+                      <th>NAME</th>
+                    </tr>
+                  </thead>
+                  <tbody>{renderedTypes}</tbody>
                 </table>
               </div>
               <div className="abilities">
                 <h3>ABILITIES</h3>
                 <table>
-                  <tr>
-                    <th>NAME</th>
-                    <th>SLOT</th>
-                  </tr>
-                  {renderedAbilities}
+                  <thead>
+                    <tr>
+                      <th>NAME</th>
+                      <th>SLOT</th>
+                    </tr>
+                  </thead>
+                  <tbody>{renderedAbilities}</tbody>
+                </table>
+              </div>
+              <div className="moves">
+                <h3>
+                  {detail.moves.length > 10
+                    ? `10 MOVES OUT OF ${detail.moves.length}`
+                    : 'ALL MOVES'}{' '}
+                </h3>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>NAME</th>
+                    </tr>
+                  </thead>
+                  <tbody>{renderedMoves}</tbody>
                 </table>
               </div>
               <div className="stats">
                 <h3>STATISTICS</h3>
                 <table>
-                  <tr>
-                    <th>NAME</th>
-                    <th>BASE</th>
-                  </tr>
-                  {renderedStats}
+                  <thead>
+                    <tr>
+                      <th>NAME</th>
+                      <th>BASE</th>
+                    </tr>
+                  </thead>
+                  <tbody>{renderedStats}</tbody>
                 </table>
               </div>
             </div>

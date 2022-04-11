@@ -39,6 +39,7 @@
 }
 .detail {
   padding: 3px;
+  text-align: center;
 }
 .detail > h1 {
   text-transform: uppercase;
