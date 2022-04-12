@@ -49,13 +49,7 @@ const InfoCard = ({ detailInfo, setVisibilityDetailCard }) => {
         </tr>
       );
     });
-    const renderedTypes = detail.types.map(({ type }) => {
-      return (
-        <tr key={type.url}>
-          <td>{type.name.toUpperCase()}</td>
-        </tr>
-      );
-    });
+
     const renderedMoves = detail.moves.slice(0, 10).map(({ move }) => {
       return (
         <tr key={move.url}>
@@ -65,69 +59,67 @@ const InfoCard = ({ detailInfo, setVisibilityDetailCard }) => {
     });
     return (
       <div className="info_container">
+        <div
+          className="close"
+          onClick={() => {
+            setVisibilityDetailCard(false);
+          }}
+        >
+          {' '}
+          &times;{' '}
+        </div>
         <div className="information">
-          <div
-            className="close"
-            onClick={() => {
-              setVisibilityDetailCard(false);
-            }}
-          >
-            {' '}
-            &times;{' '}
-          </div>
           <div className="detail">
             <h1>{detail.name}</h1>
-            <div className="SpriteContainer">{renderedSprites}</div>
-            <div className="detail_flex">
-              <div className="Types">
-                <h3>TYPES</h3>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>NAME</th>
-                    </tr>
-                  </thead>
-                  <tbody>{renderedTypes}</tbody>
-                </table>
-              </div>
-              <div className="abilities">
-                <h3>ABILITIES</h3>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>NAME</th>
-                      <th>SLOT</th>
-                    </tr>
-                  </thead>
-                  <tbody>{renderedAbilities}</tbody>
-                </table>
-              </div>
-              <div className="moves">
-                <h3>
-                  {detail.moves.length > 10
-                    ? `10 MOVES OUT OF ${detail.moves.length}`
-                    : 'ALL MOVES'}{' '}
-                </h3>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>NAME</th>
-                    </tr>
-                  </thead>
-                  <tbody>{renderedMoves}</tbody>
-                </table>
-              </div>
-              <div className="stats">
-                <h3>STATISTICS</h3>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>NAME</th>
-                      <th>BASE</th>
-                    </tr>
-                  </thead>
-                  <tbody>{renderedStats}</tbody>
-                </table>
+            <div className="detail_container">
+              <div className="SpriteContainer">{renderedSprites}</div>
+              <div className="flex">
+                <div className="detail_flex">
+                  <div className="moves">
+                    <h3>
+                      {detail.moves.length > 10
+                        ? `10 MOVES OUT OF ${detail.moves.length}`
+                        : 'ALL MOVES'}{' '}
+                    </h3>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>NAME</th>
+                        </tr>
+                      </thead>
+                      <tbody>{renderedMoves}</tbody>
+                    </table>
+                  </div>
+
+                  <div className="stats">
+                    <h3>STATISTICS</h3>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>NAME</th>
+                          <th>BASE</th>
+                        </tr>
+                      </thead>
+                      <tbody>{renderedStats}</tbody>
+                    </table>
+                  </div>
+                  <div className="abilities">
+                    <h3>ABILITIES</h3>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th>NAME</th>
+                          <th>SLOT</th>
+                        </tr>
+                      </thead>
+                      <tbody>{renderedAbilities}</tbody>
+                    </table>
+                  </div>
+                </div>
+                <div className="detail_flex description">
+                  <h1>{detail.name} </h1>
+                  <span>{detail.order}</span>
+                </div>
               </div>
             </div>
           </div>
