@@ -88,4 +88,19 @@ h3 {
 }
 .description > h1 {
   text-transform: capitalize;
+  margin: 0;
+}
+.description {
+  flex-grow: 1;
+  text-align: justify;
+}
+.pokemon_id {
+  margin: 0;
+  margin-bottom: 5px;
+  padding: 0;
+  color: rgb(92, 91, 91);
+  /* text-shadow: 0 0 1px black; */
+}
+.pokemon_description {
+  font-size: 1.5em;
 }

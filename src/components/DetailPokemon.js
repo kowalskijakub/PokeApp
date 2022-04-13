@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './DetailCard.css';
+import './DetailPokemon.css';
 import Loading from './Loading';
-const InfoCard = ({ detailInfo, setVisibilityDetailCard }) => {
+const DetailPokemon = ({ detailInfo, setVisibilityDetailCard }) => {
   const [detail, setDetail] = useState('');
 
   useEffect(() => {
@@ -57,6 +57,13 @@ const InfoCard = ({ detailInfo, setVisibilityDetailCard }) => {
         </tr>
       );
     });
+    const renderedTypes = detail.types
+      .map(({ type }) => {
+        return type.name.charAt(0).toUpperCase() + type.name.slice(1);
+      })
+      .join(', ');
+    const renderedID =
+      '#' + '0'.repeat(5 - detail.id.toString().length) + detail.id;
     return (
       <div className="info_container">
         <div
@@ -70,7 +77,7 @@ const InfoCard = ({ detailInfo, setVisibilityDetailCard }) => {
         </div>
         <div className="information">
           <div className="detail">
-            <h1>{detail.name}</h1>
+            <h1>{detail.name.split('-').join(' ')}</h1>
             <div className="detail_container">
               <div className="SpriteContainer">{renderedSprites}</div>
               <div className="flex">
@@ -87,7 +94,15 @@ const InfoCard = ({ detailInfo, setVisibilityDetailCard }) => {
                           <th>NAME</th>
                         </tr>
                       </thead>
-                      <tbody>{renderedMoves}</tbody>
+                      <tbody>
+                        {detail.moves.length !== 0 ? (
+                          renderedMoves
+                        ) : (
+                          <tr>
+                            <td>NONE</td>
+                          </tr>
+                        )}
+                      </tbody>
                     </table>
                   </div>
 
@@ -116,9 +131,19 @@ const InfoCard = ({ detailInfo, setVisibilityDetailCard }) => {
                     </table>
                   </div>
                 </div>
-                <div className="detail_flex description">
-                  <h1>{detail.name} </h1>
-                  <span>{detail.order}</span>
+                <div className=" description">
+                  <h1>{detail.name.split('-').join(' ')} </h1>
+                  <p className="pokemon_id">{renderedID}</p>
+                  <p className="pokemon_description">
+                    Pokemon type: {renderedTypes}
+                    <br />
+                    Height: {detail.height * 10}cm
+                    <br />
+                    Weight: {detail.weight / 10}kg
+                    <br />
+                    Base Exp.: {detail.base_experience}
+                    <br />
+                  </p>
                 </div>
               </div>
             </div>
@@ -130,4 +155,4 @@ const InfoCard = ({ detailInfo, setVisibilityDetailCard }) => {
   return <Loading />;
 };
 
-export default InfoCard;
+export default DetailPokemon;

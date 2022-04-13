@@ -4,7 +4,7 @@ import Pokemon from './components/Pokemon/Pokemon';
 import Items from './components/Items/Items';
 import Header from './components/Header';
 import NavBar from './components/NavBar';
-import DetailCard from './components/DetailCard';
+import DetailPokemon from './components/DetailPokemon';
 const App = () => {
   const [visibilityDetailCard, setVisibilityDetailCard] = useState(false);
   const [detailInfo, setDetailInfo] = useState([]);
@@ -12,7 +12,7 @@ const App = () => {
     <div>
       <Header />
       {visibilityDetailCard ? (
-        <DetailCard
+        <DetailPokemon
           detailInfo={detailInfo}
           setVisibilityDetailCard={setVisibilityDetailCard}
         />
