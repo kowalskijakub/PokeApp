@@ -1,25 +1,41 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Pokemon } from './components/Pokemon';
-import { Items } from './components/Items';
+import { Pokemon, DetailPokemon } from './components/Pokemon';
+import { DetailItem, Items } from './components/Items';
 import Header from './components/Header';
 import NavBar from './components/NavBar';
-import DetailPokemon from './components/DetailPokemon';
+
 const App = () => {
   const [visibilityDetailCard, setVisibilityDetailCard] = useState(false);
   const [detailInfo, setDetailInfo] = useState([]);
   return (
     <>
       <Header />
-      {visibilityDetailCard && (
-        <DetailPokemon
-          detailInfo={detailInfo}
-          setVisibilityDetailCard={setVisibilityDetailCard}
-        />
-      )}
       <BrowserRouter>
         <NavBar />
         <Routes>
+          {visibilityDetailCard && (
+            <Route
+              path="/"
+              element={
+                <DetailPokemon
+                  detailInfo={detailInfo}
+                  setVisibilityDetailCard={setVisibilityDetailCard}
+                />
+              }
+            />
+          )}
+          {visibilityDetailCard && (
+            <Route
+              path="/items"
+              element={
+                <DetailItem
+                  detailInfo={detailInfo}
+                  setVisibilityDetailCard={setVisibilityDetailCard}
+                />
+              }
+            />
+          )}
           <Route
             path="/"
             element={
@@ -29,7 +45,15 @@ const App = () => {
               />
             }
           />
-          <Route path="/items" element={<Items />} />
+          <Route
+            path="/items"
+            element={
+              <Items
+                setDetailInfo={setDetailInfo}
+                setVisibilityDetailCard={setVisibilityDetailCard}
+              />
+            }
+          />
         </Routes>
       </BrowserRouter>
     </>

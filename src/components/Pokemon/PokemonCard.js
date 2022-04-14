@@ -16,7 +16,7 @@ const PokemonCard = ({ pokemon, setVisibilityDetailCard, setDetailInfo }) => {
       className="card"
       onClick={() => {
         setVisibilityDetailCard(true);
-        setDetailInfo(['pokemon', pokemon]);
+        setDetailInfo(pokemon);
       }}
     >
       <h1>{pokemon.name}</h1>

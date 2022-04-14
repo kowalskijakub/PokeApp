@@ -3,7 +3,7 @@ import Loading from '../Loading';
 import ItemCard from './ItemCard';
 import ChangePage from '../ChangePage';
 
-const Items = () => {
+const Items = ({ setVisibilityDetailCard, setDetailInfo }) => {
   const [items, setItems] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
 
@@ -21,7 +21,12 @@ const Items = () => {
   }, [offsetItems]);
   if (items) {
     const renderedItems = items.map(item => (
-      <ItemCard item={item} key={item.url} />
+      <ItemCard
+        item={item}
+        key={item.url}
+        setVisibilityDetailCard={setVisibilityDetailCard}
+        setDetailInfo={setDetailInfo}
+      />
     ));
     return (
       <>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ItemCard = ({ item }) => {
+const ItemCard = ({ item, setVisibilityDetailCard, setDetailInfo }) => {
   let imgUrl;
   if (item.name.includes('berries')) {
     imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/berries/${item.name}.png`;
@@ -15,7 +15,13 @@ const ItemCard = ({ item }) => {
   };
 
   return (
-    <div className="card">
+    <div
+      className="card"
+      onClick={() => {
+        setVisibilityDetailCard(true);
+        setDetailInfo(item);
+      }}
+    >
       <h1>{item.name}</h1>
 
       <img src={imgUrl} alt={item.name} onError={onError} />

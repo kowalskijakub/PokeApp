@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import './DetailPokemon.css';
-import Loading from './Loading';
+import '../Detail.css';
+import Loading from '../Loading';
 const DetailPokemon = ({ detailInfo, setVisibilityDetailCard }) => {
   const [detail, setDetail] = useState('');
 
   useEffect(() => {
-    fetch(detailInfo[1].url)
+    fetch(detailInfo.url)
       .then(response => response.json())
       .then(data => {
         setDetail(data);
