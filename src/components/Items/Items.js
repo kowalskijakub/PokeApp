@@ -20,11 +20,11 @@ const Items = () => {
       });
   }, [offsetItems]);
   if (items) {
-    const renderedItems = items.map(item => {
-      return <ItemCard item={item} key={item.url} />;
-    });
+    const renderedItems = items.map(item => (
+      <ItemCard item={item} key={item.url} />
+    ));
     return (
-      <div>
+      <>
         <div className="container">{renderedItems}</div>
         <div>
           <ChangePage
@@ -33,7 +33,7 @@ const Items = () => {
             maxPage={maxPage}
           />
         </div>
-      </div>
+      </>
     );
   }
   return <Loading />;

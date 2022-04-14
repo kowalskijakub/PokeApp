@@ -8,19 +8,17 @@ const ItemCard = ({ item }) => {
     imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/${item.name}.png`;
   }
 
+  const onError = ({ currentTarget }) => {
+    currentTarget.onerror = null; // prevents looping
+    currentTarget.src =
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png';
+  };
+
   return (
     <div className="card">
       <h1>{item.name}</h1>
 
-      <img
-        src={imgUrl}
-        alt={item.name}
-        onError={({ currentTarget }) => {
-          currentTarget.onerror = null; // prevents looping
-          currentTarget.src =
-            'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png';
-        }}
-      />
+      <img src={imgUrl} alt={item.name} onError={onError} />
     </div>
   );
 };

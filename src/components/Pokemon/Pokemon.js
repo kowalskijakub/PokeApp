@@ -24,18 +24,16 @@ const Pokemon = ({ setVisibilityDetailCard, setDetailInfo }) => {
       });
   }, [offsetPokemon]);
   if (pokemon) {
-    const renderedPokemon = pokemon.map(n => {
-      return (
-        <PokemonCard
-          pokemon={n}
-          key={n.url}
-          setVisibilityDetailCard={setVisibilityDetailCard}
-          setDetailInfo={setDetailInfo}
-        />
-      );
-    });
+    const renderedPokemon = pokemon.map(n => (
+      <PokemonCard
+        pokemon={n}
+        key={n.url}
+        setVisibilityDetailCard={setVisibilityDetailCard}
+        setDetailInfo={setDetailInfo}
+      />
+    ));
     return (
-      <div>
+      <>
         <div className="container">{renderedPokemon}</div>
         <div>
           <ChangePage
@@ -45,7 +43,7 @@ const Pokemon = ({ setVisibilityDetailCard, setDetailInfo }) => {
           />
         </div>
         <Outlet />
-      </div>
+      </>
     );
   }
   return <Loading />;

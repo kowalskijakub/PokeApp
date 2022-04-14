@@ -48,9 +48,7 @@ const ChangePage = ({ pageNumber, setPageNumber, maxPage }) => {
   if (maxPage !== 1)
     return (
       <div className="change_page">
-        {pageNumber === 1 ? (
-          ''
-        ) : (
+        {pageNumber === 1 || (
           <div
             className="previous_page page_button"
             onClick={() => {
@@ -61,9 +59,7 @@ const ChangePage = ({ pageNumber, setPageNumber, maxPage }) => {
           </div>
         )}
         <div className="page_numb_container">{renderedPageContainer}</div>
-        {pageNumber === maxPage ? (
-          ''
-        ) : (
+        {pageNumber === maxPage || (
           <div
             className="next_page page_button"
             onClick={() => {

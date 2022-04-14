@@ -12,6 +12,12 @@ const DetailPokemon = ({ detailInfo, setVisibilityDetailCard }) => {
       });
   }, [detailInfo]);
 
+  const onError = ({ currentTarget }) => {
+    currentTarget.onerror = null; // prevents looping
+    currentTarget.src =
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png';
+  };
+
   if (detail) {
     const renderedSprites = Object.entries(detail.sprites)
       .reverse()
@@ -22,45 +28,33 @@ const DetailPokemon = ({ detailInfo, setVisibilityDetailCard }) => {
               key={values}
               src={values}
               alt={values.name}
-              onError={({ currentTarget }) => {
-                currentTarget.onerror = null; // prevents looping
-                currentTarget.src =
-                  'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/0.png';
-              }}
+              onError={onError}
             />
           );
         } else {
           return '';
         }
       });
-    const renderedStats = detail.stats.map(({ base_stat, stat }) => {
-      return (
-        <tr className="stat" key={stat.url}>
-          <td>{stat.name.split('-').join(' ').toUpperCase()}</td>
-          <td>{base_stat}</td>
-        </tr>
-      );
-    });
-    const renderedAbilities = detail.abilities.map(({ ability, slot }) => {
-      return (
-        <tr className="ability" key={ability.url}>
-          <td>{ability.name.split('-').join(' ').toUpperCase()}</td>
-          <td>{slot}</td>
-        </tr>
-      );
-    });
+    const renderedStats = detail.stats.map(({ base_stat, stat }) => (
+      <tr className="stat" key={stat.url}>
+        <td>{stat.name.split('-').join(' ').toUpperCase()}</td>
+        <td>{base_stat}</td>
+      </tr>
+    ));
+    const renderedAbilities = detail.abilities.map(({ ability, slot }) => (
+      <tr className="ability" key={ability.url}>
+        <td>{ability.name.split('-').join(' ').toUpperCase()}</td>
+        <td>{slot}</td>
+      </tr>
+    ));
 
-    const renderedMoves = detail.moves.slice(0, 10).map(({ move }) => {
-      return (
-        <tr key={move.url}>
-          <td>{move.name.split('-').join(' ').toUpperCase()}</td>
-        </tr>
-      );
-    });
+    const renderedMoves = detail.moves.slice(0, 10).map(({ move }) => (
+      <tr key={move.url}>
+        <td>{move.name.split('-').join(' ').toUpperCase()}</td>
+      </tr>
+    ));
     const renderedTypes = detail.types
-      .map(({ type }) => {
-        return type.name.charAt(0).toUpperCase() + type.name.slice(1);
-      })
+      .map(({ type }) => type.name.charAt(0).toUpperCase() + type.name.slice(1))
       .join(', ');
     const renderedID =
       '#' + '0'.repeat(5 - detail.id.toString().length) + detail.id;
@@ -86,7 +80,7 @@ const DetailPokemon = ({ detailInfo, setVisibilityDetailCard }) => {
                     <h3>
                       {detail.moves.length > 10
                         ? `10 MOVES OUT OF ${detail.moves.length}`
-                        : 'ALL MOVES'}{' '}
+                        : 'ALL MOVES'}
                     </h3>
                     <table>
                       <thead>
