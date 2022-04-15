@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { ItemCard } from './Items';
 import { PokemonCard } from './Pokemon';
 import './Search.css';
@@ -8,6 +9,7 @@ const Search = ({ setVisibilityDetailCard, setDetailInfo }) => {
   const [data, setData] = useState('');
   const inputSearch = useRef();
   const [type, setType] = useState('');
+  const location = useLocation();
 
   useEffect(() => {
     if (url)
@@ -17,12 +19,15 @@ const Search = ({ setVisibilityDetailCard, setDetailInfo }) => {
         .catch(() => {});
   }, [url]);
 
+  useEffect(() => {
+    setData('');
+    setQuery('');
+  }, [location]);
+
   const onSubmit = e => {
     e.preventDefault();
     if (query) {
-      const location = window.location.href.split('?')[0];
-
-      if (location === 'http://localhost:3000/items') {
+      if (location.pathname === '/items') {
         setType('item');
         setUrl(
           `https://pokeapi.co/api/v2/item/${query
@@ -30,7 +35,7 @@ const Search = ({ setVisibilityDetailCard, setDetailInfo }) => {
             .join('-')
             .toLowerCase()}`
         );
-      } else if (location === 'http://localhost:3000/') {
+      } else if (location.pathname === '/') {
         setType('pokemon');
         setUrl(
           `https://pokeapi.co/api/v2/pokemon/${query
@@ -39,7 +44,6 @@ const Search = ({ setVisibilityDetailCard, setDetailInfo }) => {
             .toLowerCase()}`
         );
       }
-      console.log(data);
     }
   };
 
