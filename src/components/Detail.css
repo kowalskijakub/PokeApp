@@ -55,6 +55,7 @@
   justify-content: center;
   gap: 20px;
   flex-grow: 1;
+  min-width: 50%;
 }
 table {
   font-family: arial, sans-serif;
@@ -94,13 +95,17 @@ h3 {
   flex-grow: 1;
   text-align: justify;
 }
-.pokemon_id {
+.detail_id {
   margin: 0;
   margin-bottom: 5px;
   padding: 0;
   color: rgb(92, 91, 91);
   /* text-shadow: 0 0 1px black; */
 }
-.pokemon_description {
+.detail_description {
   font-size: 1.5em;
+  word-wrap: break-word;
+}
+.grow {
+  flex-grow: 1;
 }

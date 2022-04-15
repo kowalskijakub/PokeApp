@@ -127,8 +127,8 @@ const DetailPokemon = ({ detailInfo, setVisibilityDetailCard }) => {
                 </div>
                 <div className=" description">
                   <h1>{detail.name.split('-').join(' ')} </h1>
-                  <p className="pokemon_id">{renderedID}</p>
-                  <p className="pokemon_description">
+                  <p className="detail_id">{renderedID}</p>
+                  <p className="detail_description">
                     Pokemon type: {renderedTypes}
                     <br />
                     Height: {detail.height * 10}cm
