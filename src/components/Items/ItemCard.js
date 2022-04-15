@@ -22,7 +22,7 @@ const ItemCard = ({ item, setVisibilityDetailCard, setDetailInfo }) => {
         setDetailInfo(item);
       }}
     >
-      <h1>{item.name}</h1>
+      <h1>{item.name.split('-').join(' ')}</h1>
 
       <img src={imgUrl} alt={item.name} onError={onError} />
     </div>

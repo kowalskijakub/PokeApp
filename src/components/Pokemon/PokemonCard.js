@@ -19,7 +19,7 @@ const PokemonCard = ({ pokemon, setVisibilityDetailCard, setDetailInfo }) => {
         setDetailInfo(pokemon);
       }}
     >
-      <h1>{pokemon.name}</h1>
+      <h1>{pokemon.name.split('-').join(' ')}</h1>
 
       <img src={imgUrl} alt={pokemon.name} onError={onError} />
     </div>
