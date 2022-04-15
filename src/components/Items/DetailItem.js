@@ -43,15 +43,15 @@ const DetailItem = ({ detailInfo, setVisibilityDetailCard }) => {
       </>
     ));
     const renderedGames = detail.game_indices.map(
-      ({ game_index, generation: { name } }) => (
-        <tr>
+      ({ game_index, generation: { name, url } }) => (
+        <tr key={url}>
           <td>{game_index}</td>
           <td>{name.toUpperCase().split('-').join(' ')}</td>
         </tr>
       )
     );
-    const renderedAttributes = detail.attributes.map(({ name }) => (
-      <tr>
+    const renderedAttributes = detail.attributes.map(({ name, url }) => (
+      <tr key={url}>
         <td>{name.split('-').join(' ').toUpperCase()}</td>
       </tr>
     ));
