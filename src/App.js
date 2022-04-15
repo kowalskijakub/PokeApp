@@ -4,15 +4,24 @@ import { Pokemon, DetailPokemon } from './components/Pokemon';
 import { DetailItem, Items } from './components/Items';
 import Header from './components/Header';
 import NavBar from './components/NavBar';
+import Search from './components/Search';
 
 const App = () => {
   const [visibilityDetailCard, setVisibilityDetailCard] = useState(false);
+  const [searchVisiblity, setSearchVisiblity] = useState(false);
   const [detailInfo, setDetailInfo] = useState([]);
   return (
     <>
       <Header />
       <BrowserRouter>
-        <NavBar />
+        <NavBar
+          setSearchVisiblity={setSearchVisiblity}
+          searchVisiblity={searchVisiblity}
+        />
+        <Search
+          setDetailInfo={setDetailInfo}
+          setVisibilityDetailCard={setVisibilityDetailCard}
+        />
         <Routes>
           {visibilityDetailCard && (
             <Route

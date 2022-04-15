@@ -1,0 +1,39 @@
+.search_container {
+  text-align: center;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 10px auto;
+}
+.search_container > input {
+  font-size: 1.5em;
+  border: 0;
+  margin: 2px;
+  font-family: 'Pokemon X and Y';
+  outline: none;
+  border-radius: 10px 0 0 10px;
+  padding: 5px;
+
+  flex-grow: 4;
+}
+.search_container > input:focus {
+  background-color: lightgray;
+}
+.search_container > button {
+  font-size: 1.5em;
+  border: 0;
+  margin: 2px;
+  font-family: 'Pokemon X and Y';
+  border-radius: 0 10px 10px 0;
+  padding: 5px;
+  flex-grow: 0;
+}
+.search_container > button:hover {
+  cursor: pointer;
+  background-color: lightgray;
+}
+.search_result {
+  display: flex;
+  justify-content: center;
+}

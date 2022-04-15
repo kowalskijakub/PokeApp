@@ -37,7 +37,8 @@ header {
   gap: 10px;
   padding: 5px 15px;
 }
-.menu > a {
+.menu > a,
+.search_button {
   display: block;
   padding: 5px;
   text-decoration: none;
@@ -75,4 +76,15 @@ header {
 .card:hover {
   cursor: pointer;
   background-color: rgb(112, 112, 112);
+}
+.search_button {
+  background-color: transparent;
+  border: 0;
+  margin-left: auto;
+}
+.search_button:hover {
+  background-color: #3d7dca;
+  color: black;
+  transition: 0.2s;
+  cursor: pointer;
 }

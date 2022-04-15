@@ -1,7 +1,6 @@
 import React from 'react';
 
 const PokemonCard = ({ pokemon, setVisibilityDetailCard, setDetailInfo }) => {
-  console.log();
   const pokemonNumb = pokemon.url.split('/')[6];
   const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonNumb}.png`;
 
